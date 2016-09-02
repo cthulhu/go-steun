@@ -1,0 +1,19 @@
+package pointers
+
+// TODO: Add test
+func StrPtr(str string) *string {
+	return &str
+}
+
+func BoolPtr(bl bool) *bool {
+	return &bl
+}
+
+func Float64Ptr(f float64) *float64 {
+	return &f
+}
+
+// TODO: Add test
+func IsBlank(pStr *string) bool {
+	return pStr == nil || *pStr == ""
+}

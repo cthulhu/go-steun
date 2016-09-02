@@ -1,0 +1,6 @@
+-R
+-f .tags
+--exclude=vendor
+--exclude=_vendor
+--exclude=.git
+--exclude=bin
