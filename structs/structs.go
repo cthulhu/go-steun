@@ -28,3 +28,13 @@ func Set(structObj interface{}, name string, value interface{}) error {
 	structFieldValue.Set(val)
 	return nil
 }
+
+func Get(structObj interface{}, name string) (interface{}, error) {
+	structValue := reflect.ValueOf(structObj).Elem()
+	structFieldValue := structValue.FieldByName(name)
+
+	if !structFieldValue.IsValid() {
+		return nil, fmt.Errorf("No such field: %s in obj", name)
+	}
+	return structFieldValue.Interface(), nil
+}

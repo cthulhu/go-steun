@@ -1,8 +1,8 @@
 package structs_test
 
 import (
-	. "github.com/Shop2market/bonobo/support/structs"
-	"github.com/Shop2market/yunnan/support"
+	"github.com/cthulhu/go-steun/pointers"
+	. "github.com/cthulhu/go-steun/structs"
 
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
@@ -16,7 +16,7 @@ type TestStruct struct {
 }
 
 var _ = Describe("Structs", func() {
-	Context("Plain structs", func() {
+	Context("Set", func() {
 		It("Sets string values", func() {
 			testStruct := &TestStruct{}
 			Set(testStruct, "Name", "John")
@@ -38,8 +38,36 @@ var _ = Describe("Structs", func() {
 			testStruct := &TestStruct{}
 			var job string = "IT"
 			Expect(Set(testStruct, "Job", &job)).NotTo(HaveOccurred())
-			Expect(testStruct.Job).To(BeEquivalentTo(support.StrPtr("IT")))
+			Expect(testStruct.Job).To(BeEquivalentTo(pointers.StrPtr("IT")))
 		})
+	})
+	Context("Get", func() {
+		It("Gets string values", func() {
+			testStruct := &TestStruct{Name: "John"}
+			actual, err := Get(testStruct, "Name")
+			Expect(err).ToNot(HaveOccurred())
+			Expect(actual).To(BeEquivalentTo("John"))
+		})
+		It("Gets int64 values", func() {
+			testStruct := &TestStruct{Age: 20}
+			actual, err := Get(testStruct, "Age")
+			Expect(err).ToNot(HaveOccurred())
+			Expect(actual).To(BeEquivalentTo(20))
+		})
+		It("Gets float64 values", func() {
+			testStruct := &TestStruct{Weight: 75.7}
+			actual, err := Get(testStruct, "Weight")
+			Expect(err).ToNot(HaveOccurred())
+			Expect(actual).To(BeEquivalentTo(75.7))
 
+		})
+		It("Gets *string values", func() {
+			job := "IT"
+			testStruct := &TestStruct{Job: &job}
+			actual, err := Get(testStruct, "Job")
+			Expect(err).ToNot(HaveOccurred())
+			Expect(actual).To(BeEquivalentTo(pointers.StrPtr("IT")))
+
+		})
 	})
 })
