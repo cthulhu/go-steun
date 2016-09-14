@@ -12,6 +12,9 @@ func BoolPtr(bl bool) *bool {
 func Float64Ptr(f float64) *float64 {
 	return &f
 }
+func IntPtr(i int) *int {
+	return &i
+}
 
 // TODO: Add test
 func IsBlank(pStr *string) bool {

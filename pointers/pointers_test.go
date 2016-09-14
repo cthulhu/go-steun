@@ -26,4 +26,10 @@ var _ = Describe("Pointers", func() {
 			Expect(Float64Ptr(actual)).To(BeEquivalentTo(&actual))
 		})
 	})
+	Context("IntPtr", func() {
+		It("returns pointer to integer", func() {
+			actual := 12
+			Expect(IntPtr(actual)).To(BeEquivalentTo(&actual))
+		})
+	})
 })
