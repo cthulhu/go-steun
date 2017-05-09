@@ -1,0 +1,14 @@
+language: go
+sudo: required
+go:
+  - 1.6
+  - 1.7
+  - 1.8
+install:
+  - go get github.com/daviddengcn/go-colortext
+  - go get github.com/mattn/gom
+  - go get github.com/onsi/ginkgo/ginkgo
+  - go get github.com/onsi/gomega
+script:
+  - $HOME/gopath/bin/gom install
+  - $HOME/gopath/bin/gom exec ginkgo -r -skipPackage vendor
