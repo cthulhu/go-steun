@@ -1,0 +1,44 @@
+package time_id_test
+
+import (
+	"time"
+
+	. "github.com/cthulhu/go-steun/time_id"
+
+	. "github.com/onsi/ginkgo"
+	. "github.com/onsi/gomega"
+)
+
+var _ = Describe("TimeId", func() {
+	It("Returns a date from timeid", func() {
+		id := TimeId("20141231")
+		Expect(id.ToDate()).To(Equal(time.Date(2014, time.Month(12), 31, 0, 0, 0, 0, time.UTC)))
+	})
+
+	It("Returns time ids till a given date", func() {
+		start := TimeId("20141201")
+		end := TimeId("20141205")
+		Expect(start.Till(end)).To(Equal([]TimeId{
+			TimeId("20141201"),
+			TimeId("20141202"),
+			TimeId("20141203"),
+			TimeId("20141204"),
+			TimeId("20141205"),
+		}))
+	})
+
+	It("Returns a YearString from timeid", func() {
+		id := TimeId("20141231")
+		Expect(id.YearString()).To(Equal("2014"))
+	})
+
+	It("Returns a MonthString from timeid", func() {
+		id := TimeId("20141231")
+		Expect(id.MonthString()).To(Equal("12"))
+	})
+
+	It("Returns a DayString from timeid", func() {
+		id := TimeId("20141231")
+		Expect(id.DayString()).To(Equal("31"))
+	})
+})
