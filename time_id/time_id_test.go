@@ -41,4 +41,19 @@ var _ = Describe("TimeId", func() {
 		id := TimeId("20141231")
 		Expect(id.DayString()).To(Equal("31"))
 	})
+	It("Returns a YearInt from timeid", func() {
+		id := TimeId("20141231")
+		Expect(id.YearInt()).To(Equal(2014))
+	})
+
+	It("Returns a MonthInt from timeid", func() {
+		id := TimeId("20141231")
+		Expect(id.MonthInt()).To(Equal(12))
+	})
+
+	It("Returns a DayInt from timeid", func() {
+		id := TimeId("20141231")
+		Expect(id.DayInt()).To(Equal(31))
+	})
+
 })
