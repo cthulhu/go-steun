@@ -15,6 +15,12 @@ func NewByTime(date time.Time) TimeId {
 	return TimeId(fmt.Sprintf("%d%02d%02d", date.Year(), date.Month(), date.Day()))
 }
 
+// NewByDays - Builds time ids by daysBack from now
+// daysBack - negative value for days back, positive for days forward
+func NewByDays(daysBack int) TimeId {
+	return NewByTime(time.Now().AddDate(0, 0, daysBack))
+}
+
 // ToStr - converts to string
 func (timeId TimeId) ToStr() string {
 	return string(timeId)

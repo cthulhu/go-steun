@@ -55,5 +55,11 @@ var _ = Describe("TimeId", func() {
 		id := TimeId("20141231")
 		Expect(id.DayInt()).To(Equal(31))
 	})
-
+	Context("NewByDays", func() {
+		It("returns id", func() {
+			id := NewByDays(-2)
+			now := time.Now().AddDate(0, 0, -2)
+			Expect(id.DayInt()).To(Equal(now.Day()))
+		})
+	})
 })
