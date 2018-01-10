@@ -6,15 +6,17 @@ import (
 )
 
 func Read(filename string) []byte {
-	file, err := os.Open("fixtures/" + filename)
+	return ReadFile("fixtures/" + filename)
+}
+
+func ReadFile(path string) []byte {
+	file, err := os.Open(path)
 	if err != nil {
 		panic(err)
 	}
-
 	d, err := ioutil.ReadAll(file)
 	if err != nil {
 		panic(err)
 	}
-
 	return d
 }
