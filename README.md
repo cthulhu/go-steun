@@ -10,15 +10,16 @@ Handy misc tools for go development
 * Raise - Wrapper that panics on errors
 * Structs - Set/Get helpers to write/read random fields from structs by their string names
 * TimeId - a set of helpers to work with Date/Time as a timeID in YYDDMM format
+* URI - a set of helpers duplicating functionality of JS's encodeuricomponent/decodeuricomponent and others
 
 ## Installation
 
     go get github.com/cthulhu/go-steun
 
   OR alternatively you can query individual packages
-  
+
     go get github.com/cthulhu/go-steun/{package}
-  
+
   OR just import it in your source file and let go-dep solve it for you
 
 ## Contribution
@@ -29,9 +30,8 @@ Any possible contributions are welcome. See [Contributing](CONTRIBUTING.md) to g
 
 For filing bugs, suggesting improvements, or requesting new features, please open an [issue](https://github.com/cthulhu/go-steun/issues).
 
-  
+
 
 ## License
 
   See [LICENSE](LICENSE) File
-  
