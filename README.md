@@ -11,6 +11,7 @@ Handy misc tools for go development
 * Structs - Set/Get helpers to write/read random fields from structs by their string names
 * TimeId - a set of helpers to work with Date/Time as a timeID in YYDDMM format
 * URI - a set of helpers duplicating functionality of JS's encodeuricomponent/decodeuricomponent and others
+* Retry - simple retry wrapper, supports Before and After retry
 
 ## Installation
 
