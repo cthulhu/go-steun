@@ -5,7 +5,7 @@ import (
 
 	. "github.com/cthulhu/go-steun/retry"
 
-	. "github.com/onsi/ginkgo"
+	. "github.com/onsi/ginkgo/v2"
 	. "github.com/onsi/gomega"
 )
 

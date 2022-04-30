@@ -3,7 +3,7 @@ package pointers_test
 import (
 	. "github.com/cthulhu/go-steun/pointers"
 
-	. "github.com/onsi/ginkgo"
+	. "github.com/onsi/ginkgo/v2"
 	. "github.com/onsi/gomega"
 )
 

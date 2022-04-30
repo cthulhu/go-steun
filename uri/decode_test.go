@@ -5,7 +5,7 @@ import (
 
 	. "github.com/cthulhu/go-steun/uri"
 
-	. "github.com/onsi/ginkgo"
+	. "github.com/onsi/ginkgo/v2"
 	. "github.com/onsi/gomega"
 )
 
