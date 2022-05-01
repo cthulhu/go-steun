@@ -18,5 +18,8 @@ jobs:
       with:
         go-version: 1.18
 
+    - name: Install ginkgo
+      run: go install -mod=mod github.com/onsi/ginkgo/v2/ginkgo
+
     - name: Test
-      run: ginkgo -r
+      run: ginkgo -r --randomize-all
