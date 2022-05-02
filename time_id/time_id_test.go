@@ -55,6 +55,31 @@ var _ = Describe("TimeId", func() {
 		id := TimeId("20141231")
 		Expect(id.DayInt()).To(Equal(31))
 	})
+	It("Returns a String from timeid", func() {
+		id := TimeId("20141231")
+		Expect(id.ToStr()).To(Equal("20141231"))
+	})
+	It("Returns a Date from timeid", func() {
+		id := TimeId("20141231")
+		date, err := id.ToDate()
+		Expect(err).NotTo(HaveOccurred())
+		Expect(date.Year()).To(Equal(2014))
+	})
+	It("Returns error if date is wrong", func() {
+		id := TimeId("AAAA")
+		_, err := id.ToDate()
+		Expect(err).To(HaveOccurred())
+	})
+	It("Returns error if month is wrong", func() {
+		id := TimeId("2014AA12")
+		_, err := id.ToDate()
+		Expect(err).To(HaveOccurred())
+	})
+	It("Returns error if day is wrong", func() {
+		id := TimeId("201412BB")
+		_, err := id.ToDate()
+		Expect(err).To(HaveOccurred())
+	})
 	Context("NewByDays", func() {
 		It("returns id", func() {
 			id := NewByDays(-2)
