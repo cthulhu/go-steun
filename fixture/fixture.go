@@ -2,7 +2,9 @@ package fixture
 
 import (
 	"io/ioutil"
+	"log"
 	"os"
+	"path/filepath"
 )
 
 func Read(filename string) []byte {
@@ -19,4 +21,13 @@ func ReadFile(path string) []byte {
 		panic(err)
 	}
 	return d
+}
+
+func Path(fixtureName string) string {
+	currentPath, err := os.Getwd()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	return filepath.Join(currentPath, "fixtures", fixtureName)
 }

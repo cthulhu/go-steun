@@ -18,4 +18,9 @@ var _ = Describe("Fixture", func() {
 			Expect(string(ReadFile("fixtures/one.txt"))).To(BeEquivalentTo("expected\n"))
 		})
 	})
+	Context("Path", func() {
+		It("returns the fixture path", func() {
+			Expect(Path("one")).To(ContainSubstring("/fixtures/one"))
+		})
+	})
 })
