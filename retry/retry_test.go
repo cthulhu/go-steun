@@ -10,12 +10,13 @@ import (
 )
 
 var _ = Describe("Retry", func() {
-	operation := New()
+	var operation *RetryOperation
 	var Retried bool
 	var RetriedWithError error
 	BeforeEach(func() {
 		RetriedWithError = nil
 		Retried = false
+		operation = New()
 	})
 	Context("No error", func() {
 		It("excutes only main function", func() {
@@ -45,6 +46,10 @@ var _ = Describe("Retry", func() {
 	})
 	Context("With error no retry", func() {
 		It("excutes only main function", func() {
+			operation.BeforeRetry(func(err error) {
+				Retried = true
+				RetriedWithError = err
+			})
 			operation.Do(func() error {
 				return fmt.Errorf("Generic Error")
 			})
