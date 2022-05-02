@@ -11,15 +11,17 @@ import (
 
 var _ = Describe("Retry", func() {
 	var operation *RetryOperation
-	var Retried bool
-	var RetriedWithError error
+	var Retried, AfterRetry bool
+	var RetriedWithError, AfterRetryError error
 	BeforeEach(func() {
 		RetriedWithError = nil
 		Retried = false
+		AfterRetry = false
+		AfterRetryError = nil
 		operation = New()
 	})
 	Context("No error", func() {
-		It("excutes only main function", func() {
+		It("executes only main function", func() {
 			operation.BeforeRetry(func(err error) {
 				Retried = true
 				RetriedWithError = err
@@ -32,29 +34,33 @@ var _ = Describe("Retry", func() {
 		})
 	})
 	Context("With error", func() {
-		It("excutes only main function", func() {
+		It("executes main function and before retry", func() {
 			operation.BeforeRetry(func(err error) {
 				Retried = true
 				RetriedWithError = err
+			})
+			operation.AfterRetry(func(err error) {
+				AfterRetry = true
+				AfterRetryError = err
 			})
 			operation.Do(func() error {
 				return fmt.Errorf("Generic Error")
 			})
 			Expect(RetriedWithError).To(HaveOccurred())
 			Expect(Retried).To(BeTrue())
+			Expect(AfterRetry).To(BeTrue())
+			Expect(AfterRetryError).To(HaveOccurred())
 		})
 	})
 	Context("With error no retry", func() {
-		It("excutes only main function", func() {
-			operation.BeforeRetry(func(err error) {
-				Retried = true
-				RetriedWithError = err
-			})
+		It("executes main and before function", func() {
+			Retried = false
+			RetriedWithError = nil
 			operation.Do(func() error {
 				return fmt.Errorf("Generic Error")
 			})
-			Expect(RetriedWithError).To(HaveOccurred())
-			Expect(Retried).To(BeTrue())
+			Expect(RetriedWithError).NotTo(HaveOccurred())
+			Expect(Retried).To(BeFalse())
 		})
 	})
 })
