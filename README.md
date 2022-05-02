@@ -1,6 +1,5 @@
 # go-steun
 Handy misc tools for go development
-![example branch parameter]()
 [![Build Status](https://github.com/cthulhu/go-steun/actions/workflows/go.yml/badge.svg?branch=master)](https://github.com/cthulhu/go-steun/actions)  [![Goreport](https://goreportcard.com/badge/github.com/cthulhu/go-steun)](https://goreportcard.com/badge/github.com/cthulhu/go-steun) [![License MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/cthulhu/go-steun/master/LICENSE)
 
 ## Content
