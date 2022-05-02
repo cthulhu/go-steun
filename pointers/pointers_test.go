@@ -32,4 +32,21 @@ var _ = Describe("Pointers", func() {
 			Expect(IntPtr(actual)).To(BeEquivalentTo(&actual))
 		})
 	})
+	Context("Int64Ptr", func() {
+		It("returns pointer to integer", func() {
+			actual := int64(12)
+			Expect(Int64Ptr(actual)).To(BeEquivalentTo(&actual))
+		})
+	})
+	Context("IsBlank", func() {
+		It("returns true for empty strings or nil string pointers", func() {
+			strEmpty := ""
+			Expect(IsBlank(&strEmpty)).To(BeTrue())
+			Expect(IsBlank(nil)).To(BeTrue())
+		})
+		It("returns false for non-empty strings", func() {
+			strEmpty := "Test"
+			Expect(IsBlank(&strEmpty)).To(BeFalse())
+		})
+	})
 })

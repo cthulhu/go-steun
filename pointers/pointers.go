@@ -18,6 +18,7 @@ func IntPtr(i int) *int {
 func Int64Ptr(i int64) *int64 {
 	return &i
 }
+
 // TODO: Add test
 func IsBlank(pStr *string) bool {
 	return pStr == nil || *pStr == ""
