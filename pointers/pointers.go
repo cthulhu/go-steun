@@ -1,6 +1,5 @@
 package pointers
 
-// TODO: Add test
 func StrPtr(str string) *string {
 	return &str
 }
@@ -19,7 +18,6 @@ func Int64Ptr(i int64) *int64 {
 	return &i
 }
 
-// TODO: Add test
 func IsBlank(pStr *string) bool {
 	return pStr == nil || *pStr == ""
 }

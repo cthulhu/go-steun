@@ -30,5 +30,6 @@ func (rop *RetryOperation) Do(mainFunc func() error) {
 	}
 }
 
-// We don't want to call anything, so it's best to use dummy function
-func dummyCallback(err error) {}
+func dummyCallback(err error) {
+	// Default callbacks for before and after retry are dummy
+}
